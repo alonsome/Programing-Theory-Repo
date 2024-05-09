@@ -8,6 +8,7 @@ public abstract class Shape : MonoBehaviour
     //Encapsulation
     protected string m_Color;
     protected string m_Name;
+    protected string m_text;
     public string Color{ get; private set; }
     public string Name
     {
@@ -23,8 +24,9 @@ public abstract class Shape : MonoBehaviour
         }
         get { return m_Name; }
     }
+    public string Text { get; private set; }
     
-    public void OnMouseDown()
+    public virtual void OnMouseDown()
     {
         DisplayText();
         SayColor();
@@ -32,10 +34,24 @@ public abstract class Shape : MonoBehaviour
     //POLYMORPHISM
     public virtual void DisplayText()
     {
-        Debug.Log("Hi, I am a "+m_Name);
+        m_text = "Hi, I am a " + m_Name + " and my color is "+m_Color;
+        Debug.Log(m_text);
     }
 
     public abstract void SayColor();
 
+    public string GetName()
+    {
+        return m_Name;
+    }
+
+    public string GetColor()
+    {
+        return m_Color;
+    }
+    public string GetText()
+    {
+        return m_text;
+    }
 
 }
