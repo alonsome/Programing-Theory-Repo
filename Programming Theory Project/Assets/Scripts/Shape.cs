@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 //Base class for all the shapes
@@ -8,6 +9,8 @@ public abstract class Shape : MonoBehaviour
     //Encapsulation
     protected string m_Color;
     protected string m_Name;
+    protected string m_text;
+    [SerializeField] protected TextMeshProUGUI m_UGUI;
     public string Color{ get; private set; }
     public string Name
     {
@@ -23,19 +26,31 @@ public abstract class Shape : MonoBehaviour
         }
         get { return m_Name; }
     }
-    
-    public void OnMouseDown()
+    public string Text { get; private set; }
+
+    public virtual void OnMouseDown()
     {
-        DisplayText();
-        SayColor();
+        m_UGUI.text=DisplayText();
+        //SayColor();
     }
     //POLYMORPHISM
-    public virtual void DisplayText()
+    public virtual string DisplayText()
     {
-        Debug.Log("Hi, I am a "+m_Name);
+        return m_text = "Hi, I am a " + m_Name + " and my color is "+m_Color;
+        //Debug.Log(m_text);
     }
 
-    public abstract void SayColor();
+    //public abstract void SayColor();
+    public abstract string SayColor();
 
+    public string GetName()
+    {
+        return m_Name;
+    }
+
+    public string GetColor()
+    {
+        return m_Color;
+    }
 
 }

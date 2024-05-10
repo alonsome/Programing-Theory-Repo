@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Cube : Shape
-{
+{//INHERITANCE
+    private float speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,10 +16,17 @@ public class Cube : Shape
     // Update is called once per frame
     void Update()
     {
-        
+        RotateCube();
     }
-    public override void SayColor()
+    public override string SayColor()
     {
         Debug.Log("My color is: "+m_Color);
+        return m_Color;
+    }
+
+    //ABSTRACTION
+    private void RotateCube()
+    {
+        transform.Rotate(10.0f * Time.deltaTime, 0.0f, 0.0f);
     }
 }
