@@ -18,9 +18,10 @@ public class Cube : Shape
     {
         RotateCube();
     }
-    public override void SayColor()
+    public override string SayColor()
     {
         Debug.Log("My color is: "+m_Color);
+        return m_Color;
     }
 
     //ABSTRACTION

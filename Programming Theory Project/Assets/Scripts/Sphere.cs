@@ -5,10 +5,12 @@ using UnityEngine;
 public class Sphere : Shape
 {
     Vector3 scaleChange;
+    Renderer m_renderer;
     // Start is called before the first frame update
     void Start()
     {
         scaleChange = new Vector3(-0.01f, -0.01f, -0.01f);
+        m_renderer = GetComponent<Renderer>();
         m_Color = "Green";
         m_Name = "Sphere";
     }
@@ -19,9 +21,14 @@ public class Sphere : Shape
         ChangeSize();
     }
 
-    public override void SayColor()
+    public override string SayColor()
     {
-        throw new System.NotImplementedException();
+        Color color = m_renderer.material.color;
+        return m_text = "My color is " + color.ToString();
+    }
+    public override void OnMouseDown()
+    {
+        m_UGUI.text = SayColor()+ " and I am  a "+GetName();
     }
 
     private void ChangeSize()

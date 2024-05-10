@@ -10,7 +10,7 @@ public abstract class Shape : MonoBehaviour
     protected string m_Color;
     protected string m_Name;
     protected string m_text;
-    [SerializeField] TextMeshProUGUI m_UGUI;
+    [SerializeField] protected TextMeshProUGUI m_UGUI;
     public string Color{ get; private set; }
     public string Name
     {
@@ -40,7 +40,8 @@ public abstract class Shape : MonoBehaviour
         //Debug.Log(m_text);
     }
 
-    public abstract void SayColor();
+    //public abstract void SayColor();
+    public abstract string SayColor();
 
     public string GetName()
     {
@@ -50,10 +51,6 @@ public abstract class Shape : MonoBehaviour
     public string GetColor()
     {
         return m_Color;
-    }
-    public string GetText()
-    {
-        return m_text;
     }
 
 }
