@@ -25,7 +25,7 @@ public class Sphere : Shape
     }
 
     private void ChangeSize()
-    {
+    {//ABSTRACTION
         transform.localScale += scaleChange;
         if (transform.localScale.y < 0.1f)
         {
